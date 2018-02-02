@@ -15,8 +15,13 @@ io.on('connection', function (socket) {
                 songsSubmitted: []
             };
             socket.emit('users:list', JSON.stringify(Object.keys(users)))
+            
+            socket.on('disconnect', function() {
+                delete users[data.username];
+            });
         } else {
             socket.emit('error', { message: 'Username is not OK.' });
         }
+
     });
 });
