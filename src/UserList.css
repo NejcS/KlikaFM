@@ -1,0 +1,10 @@
+.klikafm-user-list {
+	width: 100px;
+	background-color: rgba(180, 180, 180, 0.3);
+}
+
+.klikafm-user-list-item {
+	height: 20px;
+	line-height: 20px;
+	font-weight: 700;
+}
