@@ -1,10 +1,34 @@
 .klikafm-user-list {
-	width: 100px;
-	background-color: rgba(180, 180, 180, 0.3);
+	padding: 0 16px;
+	background-color: white;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	border-radius: 2px;
 }
 
-.klikafm-user-list-item {
-	height: 20px;
-	line-height: 20px;
-	font-weight: 700;
+.title {
+	height: 48px;
+	line-height: 48px;
+	font-weight: 500;
+	font-size: 14px;
+}
+
+.users {
+	width: 100px;
+	padding: 0;
+}
+
+.user {
+	height: 48px;
+	line-height: 48px;
+	font-size: 16px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.vinyl {
+	width: 36px;
+	height: 36px;
+	margin-right: 16px;
 }

@@ -1,1 +1,55 @@
+.klikafm {
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 64px;
+}
 
+.klikafm-grid {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 3fr 250px;
+    grid-template-rows: 48px 1fr;
+    grid-gap: 16px;
+}
+
+.klikafm-grid-item {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    background-color: #ffffff;
+}
+
+.klikafm-user-list {
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+.klikafm-search {
+    overflow: hidden;
+}
+
+.klikafm-player {
+    grid-row-start: 2;
+    grid-column-start: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.klikafm-button {
+}
+
+.klikafm-queue {
+    grid-column-start: 3;
+}
+
+.search-bar {
+    width: 100%;
+    height: 100%;
+    border-width: 0;
+    padding: 0;
+    line-height: 48px;
+    font-size: 28px;
+    padding-left: 16px;
+    font-weight: 300;
+    color: #AAA;
+}
