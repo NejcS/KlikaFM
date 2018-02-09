@@ -16,8 +16,8 @@ io.on('connection', function (socket) {
             };
             socket.emit('users:list', JSON.stringify(Object.keys(users)))
             
-            socket.on('addSong', function(data) {
-                console.log(data);
+            socket.on('addSong', function(songURL) {
+                io.sockets.emit('addSong', songURL);
             });
 
             socket.on('disconnect', function() {

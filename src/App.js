@@ -25,11 +25,15 @@ export default class App extends Component {
         this.socket = openSocket('http://localhost:8000');
         this.socket.emit('login', { username: username })
 
-        this.socket.on('users:list', data => {
+        this.socket.on('users:list', users => {
             this.setState({
-                users: JSON.parse(data),
+                users: JSON.parse(users),
                 loggedIn: true
             });
+        });
+
+        this.socket.on('addSong', songURL => {
+            this.setState({ songURL: songURL });
         });
 
         document.addEventListener('keydown', this.onKeyDown);
