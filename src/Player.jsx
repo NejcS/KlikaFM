@@ -8,10 +8,10 @@ export default class Player extends React.Component {
             autoplay: 0,
         }
     };
-
+debugger;
     return (
         <YouTube
-            videoId="2g811Eo7K8U"
+            videoId={this.props.songID || '2g811Eo7K8U'}
             opts={opts}
         />
     );

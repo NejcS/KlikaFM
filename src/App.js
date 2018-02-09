@@ -12,12 +12,13 @@ export default class App extends Component {
         this.state = {
             users: null,
             loggedIn: false,
-            songURL: null
+            songID: null,
+            inputURL: null
         };
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        return this.state.songURL === nextState.songURL;  // ignore this case
+        return this.state.inputURL === nextState.inputURL;  // ignore this case
     }
 
     onLoginFormSubmit = (username) => {
@@ -32,17 +33,15 @@ export default class App extends Component {
             });
         });
 
-        this.socket.on('addSong', songURL => {
-            this.setState({ songURL: songURL });
+        this.socket.on('addSong', song => {
+            this.setState({ songID: song.id });
         });
 
         document.addEventListener('keydown', this.onKeyDown);
     };
 
     onSongInputChange = (e) => {
-        this.setState({
-            songURL: e.target.value
-        });
+        this.setState({ inputURL: e.target.value });
     };
 
     setSongInputElement = (ref) => {
@@ -50,8 +49,12 @@ export default class App extends Component {
     };
 
     addSong = (e) => {
-        // add check if it is a URL and that it points to youtube ...
-        this.socket.emit('addSong', { url: this.state.songURL });
+        let songIDRegex = /.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/;
+        let match = this.state.inputURL.match(songIDRegex);
+        if (match && match[1]) {
+            this.socket.emit('addSong', { id: match[1] });
+            this.setState({ inputURL: '' });
+        }
     };
 
     onKeyDown = (e) => {
@@ -77,7 +80,7 @@ export default class App extends Component {
                         </div>
                         <div className={'klikafm-grid-item klikafm-button'} onClick={this.addSong}></div>
                         <div className={'klikafm-grid-item klikafm-player'}>
-                            <Player key="a2" />
+                            <Player key="a2" songID={this.state.songID} />
                         </div>
                         <div className={'klikafm-grid-item klikafm-queue'}></div>
                     </div>
